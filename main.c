@@ -11,15 +11,33 @@ void main() {
    move_sprite(0, 88, 78);
    SHOW_SPRITES;
 
+   
    while(1){
-      if(currentspriteindex == 0){
-         currentspriteindex = 1;
+      
+
+      switch (joypad()){
+         case J_LEFT:
+            scroll_sprite(0,-10,0);
+            break;
+         
+         case J_RIGHT:
+            scroll_sprite(0,10,0);
+            break;
+
+         case J_UP:
+            scroll_sprite(0,0,-10);
+            break;
+
+         case J_DOWN:
+            scroll_sprite(0,0,10);
+            break;
+      
+      default:
+         break;
       }
-      else{
-         currentspriteindex = 0;
-      }
-      set_sprite_tile(0,currentspriteindex);
-      delay(1000);
-      scroll_sprite(0,10,0);
+
+      delay(100);
+      
    }
+
 }
